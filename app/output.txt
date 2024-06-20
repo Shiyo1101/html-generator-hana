@@ -1,3 +1,5 @@
+
+/* events.html */
 <a class="schedule-cont" href="http://ptix.at/8u7S1z" target="_blank" data-category="program new">
     <div class="schedule-img-cont schedule-20240713-img">
         <div class="schedule-dates-cont js-event" data-day="2024/07/13">
@@ -6,6 +8,12 @@
         </div>
         <p class="end-cont js-end">終了</p>
     </div>
-    <p class="schedule-comment">IchigoJamプログラミングスクール</p>
-    <p>ファイル名：img.png</p>
+    <p class="schedule-comment">IchigoJam大人講座</p>
 </a>
+
+/* style.css */
+#event .event-schedule .schedule-cont .schedule-2024/07/13-img {
+  background: url(../img/event_schedule_img/schedule-20240713-bg-2.png)
+    center center no-repeat;
+  background-size: cover;
+}

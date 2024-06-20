@@ -34,22 +34,22 @@ func main() {
 	imageFileName := filepath.Base(imagePath)
 
 	// HTMLテンプレートの作成
-	htmlTemplate := generateHtmlTemplate(url, date, title, imageFileName)
+	template := generateTemplate(url, date, title, imageFileName)
 
 	// 出力ファイルパスの設定
-	outputPath := filepath.Join(".", "output.html")
+	outputPath := filepath.Join(".", "output.txt")
 
 	// HTMLテンプレートをファイルに書き込む
-	err := os.WriteFile(outputPath, []byte(htmlTemplate), 0644)
+	err := os.WriteFile(outputPath, []byte(template), 0644)
 	if err != nil {
 		fmt.Println("Error writing file:", err)
 		return
 	}
 
-	fmt.Printf("HTML template generated at %s\n", outputPath)
+	fmt.Printf("テンプレートが生成されました: %s\n", outputPath)
 }
 
-func generateHtmlTemplate(url, date, title, imageFileName string) string {
+func generateTemplate(url, date, title, imageFileName string) string {
 	// 年、月、日の部分を抽出
 	year := date[:4]
 	month := date[4:6]
@@ -70,8 +70,9 @@ func generateHtmlTemplate(url, date, title, imageFileName string) string {
 		return ""
 	}
 
-	return fmt.Sprintf(
-		`<a class="schedule-cont" href="%s" target="_blank" data-category="program new">
+	return fmt.Sprintf(`
+/* events.html */
+<a class="schedule-cont" href="%s" target="_blank" data-category="program new">
     <div class="schedule-img-cont schedule-%s-img">
         <div class="schedule-dates-cont js-event" data-day="%s">
             <p class="manth-cont">%d月</p>
@@ -80,6 +81,12 @@ func generateHtmlTemplate(url, date, title, imageFileName string) string {
         <p class="end-cont js-end">終了</p>
     </div>
     <p class="schedule-comment">%s</p>
-    <p>ファイル名：%s</p>
-</a>`, url, date, formattedDate, monthInt, dayInt, title, imageFileName)
+</a>
+
+/* style.css */
+#event .event-schedule .schedule-cont .schedule-%s-img {
+  background: url(../img/event_schedule_img/%s)
+    center center no-repeat;
+  background-size: cover;
+}`, url, date, formattedDate, monthInt, dayInt, title, formattedDate, imageFileName)
 }
