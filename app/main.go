@@ -88,5 +88,5 @@ func generateTemplate(url, date, title, imageFileName string) string {
   background: url(../img/event_schedule_img/%s)
     center center no-repeat;
   background-size: cover;
-}`, url, date, formattedDate, monthInt, dayInt, title, formattedDate, imageFileName)
+}`, url, date, formattedDate, monthInt, dayInt, title, date, imageFileName)
 }
