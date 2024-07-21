@@ -11,7 +11,7 @@ docker-compose build
 ```
 または
 ```sh
-docker compose up
+docker compose build
 ```
 
 ### Dockerコンテナの立ち上げ
