@@ -27,7 +27,7 @@ docker compose up
 ### コンテナに入る
 
 ```sh
-docker exec -it html-generator-hana /bin/sh
+docker exec -it html_generator_hana /bin/sh
 ```
 
 ## main.goのクロスコンパイル
